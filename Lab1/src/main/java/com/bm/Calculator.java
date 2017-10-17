@@ -5,19 +5,19 @@ package com.bm;
  */
 class Calculator {
 
-    int add(int a, int b){
+    protected int add(int a, int b){
         return a+b;
     }
 
-    int subtract(int a, int b){
+    protected int subtract(int a, int b){
         return a-b;
     }
 
-    int multiply(int a, int b){
+    protected int multiply(int a, int b){
         return a*b;
     }
 
-    float divide(int a, int b){
+    protected float divide(int a, int b){
         return a/b;
     }
 }
