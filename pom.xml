@@ -85,7 +85,9 @@
 	<modules>
 		<module>day1</module>
 		<module>day2</module>
+		<module>Lab1</module>
 		<module>report</module>
+		<module>Lab1</module>
 		<!-- add here any other modules -->
 	</modules>
 
