@@ -19,42 +19,38 @@ public class CalculatorTest {
 
     @Test
     public void add() throws Exception {
-        assertEquals(7, calculator.add(3,4));
-        assertEquals(-1, calculator.add(3,-4));
-        assertEquals(7, calculator.add(7,0));
-        assertEquals(0, calculator.add(0,0));
+        assertEquals(7, calculator.calculate(3.0,4.0, "+"), 0.001);
+        assertEquals(-1, calculator.calculate(3.0,-4.0, "+"), 0.001);
+        assertEquals(7, calculator.calculate(7.0,0.0, "+"), 0.001);
+        assertEquals(0, calculator.calculate(0.0,0.0, "+"), 0.001);
     }
 
     @Test
     public void subtract() throws Exception {
-        assertEquals(7, calculator.subtract(11,4));
-        assertEquals(4, calculator.subtract(4,0));
-        assertEquals(-5, calculator.subtract(-1,4));
-        assertEquals(10, calculator.subtract(6,-4));
-        assertEquals(-4, calculator.subtract(0,4));
-        assertEquals(4, calculator.subtract(0,-4));
-        assertEquals(7, calculator.subtract(7,0));
+        assertEquals(7, calculator.calculate(11.0,4.0, "-"), 0.001);
+        assertEquals(4, calculator.calculate(4.0,0.0, "-"), 0.001);
+        assertEquals(-5, calculator.calculate(-1.0,4.0, "-"), 0.001);
+        assertEquals(10, calculator.calculate(6.0,-4.0, "-"), 0.001);
+        assertEquals(-4, calculator.calculate(0.0,4.0, "-"), 0.001);
+        assertEquals(4, calculator.calculate(0.0,-4.0, "-"), 0.001);
+        assertEquals(7, calculator.calculate(7.0,0.0, "-"), 0.001);
     }
 
     @Test
     public void multiply() throws Exception {
-        assertEquals(12, calculator.multiply(3,4));
-        assertEquals(-12, calculator.multiply(3,-4));
-        assertEquals(0, calculator.multiply(3,0));
-        assertEquals(0, calculator.multiply(0,4));
-        assertEquals(0, calculator.multiply(0,0));
+        assertEquals(12, calculator.calculate(3.0,4.0, "*"), 0.001);
+        assertEquals(-12, calculator.calculate(3.0,-4.0, "*"), 0.001);
+        assertEquals(0, calculator.calculate(3.0,0.0, "*"), 0.001);
+        assertEquals(0, calculator.calculate(0.0,4.0, "*"), 0.001);
+        assertEquals(0, calculator.calculate(0.0,0.0, "*"), 0.001);
     }
 
     @Test
     public void divide() throws Exception {
-        assertEquals(7.0, calculator.divide(14,2), 0.001);
-        assertEquals(3.0, calculator.divide(3,1), 0.001);
-        assertEquals(3.0, calculator.divide(12,4), 0.001);
-        try{
-            assertEquals(7.0, calculator.divide(14,0), 0.001);
-            assertTrue(false);
-        }catch (ArithmeticException ignored){
-        }
+        assertEquals(7.0, calculator.calculate(14.0,2.0, "/"), 0.001);
+        assertEquals(3.0, calculator.calculate(3.0,1.0, "/"), 0.001);
+        assertEquals(3.0, calculator.calculate(12.0,4.0, "/"), 0.001);
+        assertEquals(Double.POSITIVE_INFINITY, calculator.calculate(14.0,0.0, "/"), 0.001);
     }
 
 }

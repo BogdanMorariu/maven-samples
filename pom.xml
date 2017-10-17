@@ -17,6 +17,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jacoco-version>0.7.9</jacoco-version>
+		<uberjar.name>benchmarks</uberjar.name>
 	</properties>
 
 	<!-- common dependencies for all modules -->
