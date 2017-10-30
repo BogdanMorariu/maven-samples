@@ -1,16 +1,16 @@
 package com.bm.repository;
 
-import java.util.HashMap;
+import com.koloboke.collect.map.hash.HashObjIntMaps;
 import java.util.Map;
 
-public class HashSetBasedRepository<T> implements InMemoryRepository<T> {
+public class KolobokeBasedRepository<T> implements InMemoryRepository<T>{
 
     private Map<T,Integer> map;
     private Integer id;
 
-    public HashSetBasedRepository() {
-        this.map = new HashMap<>();
-        this.id = 0;
+    public KolobokeBasedRepository(){
+        map = HashObjIntMaps.newUpdatableMap();
+        id = 0;
     }
 
     @Override

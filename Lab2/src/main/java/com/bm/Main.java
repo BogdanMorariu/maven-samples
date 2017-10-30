@@ -1,14 +1,22 @@
 package com.bm;
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 10, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 20, time = 1, timeUnit = TimeUnit.SECONDS)
-@Fork(1)
-@State(Scope.Benchmark)
+import com.bm.test.TestAdd;
+import com.bm.test.TestContains;
+import com.bm.test.TestRemove;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
+
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws RunnerException {
+        Options opt = new OptionsBuilder()
+                .include(TestAdd.class.getSimpleName()+".*")
+                .include(TestRemove.class.getSimpleName()+".*")
+                .include(TestContains.class.getSimpleName()+".*")
+                .build();
 
+        new Runner(opt).run();
     }
 }

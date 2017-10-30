@@ -1,15 +1,15 @@
 package com.bm.repository;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class HashSetBasedRepository<T> implements InMemoryRepository<T> {
+public class ConcurrentHashMapBasedRepository<T> implements InMemoryRepository<T>{
 
-    private Map<T,Integer> map;
+    private Map<T,Integer> map ;
     private Integer id;
 
-    public HashSetBasedRepository() {
-        this.map = new HashMap<>();
+    public ConcurrentHashMapBasedRepository() {
+        this.map = new ConcurrentHashMap<>();
         this.id = 0;
     }
 

@@ -24,4 +24,9 @@ public class TreeSetBasedRepository<T> implements InMemoryRepository<T> {
     public boolean contains(T element) {
         return tree.contains(element);
     }
+
+    @Override
+    public void clear() {
+        tree.clear();
+    }
 }

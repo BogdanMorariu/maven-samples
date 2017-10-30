@@ -25,4 +25,9 @@ public class ArrayListBasedRepository<T> implements InMemoryRepository<T> {
     public boolean contains(T element) {
         return repo.contains(element);
     }
+
+    @Override
+    public void clear() {
+        repo.clear();
+    }
 }

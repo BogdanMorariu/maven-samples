@@ -1,15 +1,15 @@
 package com.bm.repository;
 
-import java.util.HashMap;
+import org.eclipse.collections.impl.factory.Maps;
+
 import java.util.Map;
 
-public class HashSetBasedRepository<T> implements InMemoryRepository<T> {
-
+public class GSMapBasedRepostiory<T> implements InMemoryRepository<T> {
     private Map<T,Integer> map;
     private Integer id;
 
-    public HashSetBasedRepository() {
-        this.map = new HashMap<>();
+    public GSMapBasedRepostiory() {
+        this.map = Maps.mutable.empty();
         this.id = 0;
     }
 

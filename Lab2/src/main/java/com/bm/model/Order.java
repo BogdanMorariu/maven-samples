@@ -1,9 +1,13 @@
 package com.bm.model;
 
-public class Order {
+public class Order implements Comparable<Order>{
     private int id;
     private int price;
     private int quantity;
+
+    public Order(int value) {
+        this(value, value, value);
+    }
 
     public Order(int id, int price, int quantity) {
         this.id = id;
@@ -35,13 +39,6 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public int compareTo(Order order){
-        if(order.price*order.quantity > quantity*price)
-            return 1;
-        else
-            return -1;
-    }
-
     @Override
     public String toString() {
         return "Order{" +
@@ -69,5 +66,13 @@ public class Order {
         result = 31 * result + price;
         result = 31 * result + quantity;
         return result;
+    }
+
+    @Override
+    public int compareTo(Order order) {
+        if(order.price*order.quantity > quantity*price)
+            return 1;
+        else
+            return -1;
     }
 }
