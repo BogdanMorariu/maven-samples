@@ -1,11 +1,12 @@
 package com.bm.repository;
 
+import com.koloboke.collect.map.hash.HashObjIntMap;
 import com.koloboke.collect.map.hash.HashObjIntMaps;
 import java.util.Map;
 
 public class KolobokeBasedRepository<T> implements InMemoryRepository<T>{
 
-    private Map<T,Integer> map;
+    private HashObjIntMap map;
     private Integer id;
 
     public KolobokeBasedRepository(){

@@ -5,6 +5,7 @@ import com.bm.state.RepositoryState;
 import com.bm.state.SizeState;
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.Throughput)
@@ -16,41 +17,42 @@ public class TestRemove {
 
     @State(Scope.Benchmark)
     public static class ExistingState {
-        Order order;
+        Order aLong;
 
         @Setup(Level.Invocation)
         public void generateOrder(SizeState sizeState) {
-            order = sizeState.existing.get();
+            aLong = sizeState.existing.get();
         }
 
         @TearDown(Level.Invocation)
         public void addOrder(RepositoryState repositoryState) {
-            repositoryState.orders.add(order);
+            repositoryState.orders.add(aLong);
         }
     }
 
     @State(Scope.Benchmark)
     public static class LastState {
-        Order order;
+        Order aLong;
 
         @Setup(Level.Invocation)
         public void generateOrder(SizeState sizeState) {
-            order = sizeState.last.get();
+            aLong = sizeState.last.get();
         }
 
         @TearDown(Level.Invocation)
         public void addOrder(RepositoryState repositoryState) {
-            repositoryState.orders.add(order);
+            if(!(repositoryState instanceof Map))
+                repositoryState.orders.add(aLong);
         }
     }
 
     @Benchmark
     public void remove_existing(RepositoryState repositoryState, ExistingState existing) {
-        repositoryState.orders.remove(existing.order);
+        repositoryState.orders.remove(existing.aLong);
     }
 
     @Benchmark
     public void remove_last(RepositoryState repositoryState, LastState last) {
-        repositoryState.orders.remove(last.order);
+        repositoryState.orders.remove(last.aLong);
     }
 }

@@ -53,11 +53,11 @@ public class Order implements Comparable<Order>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order order = (Order) o;
+        Order aLong = (Order) o;
 
-        if (id != order.id) return false;
-        if (price != order.price) return false;
-        return quantity == order.quantity;
+        if (id != aLong.id) return false;
+        if (price != aLong.price) return false;
+        return quantity == aLong.quantity;
     }
 
     @Override
@@ -69,8 +69,8 @@ public class Order implements Comparable<Order>{
     }
 
     @Override
-    public int compareTo(Order order) {
-        if(order.price*order.quantity > quantity*price)
+    public int compareTo(Order aLong) {
+        if(aLong.price* aLong.quantity > quantity*price)
             return 1;
         else
             return -1;

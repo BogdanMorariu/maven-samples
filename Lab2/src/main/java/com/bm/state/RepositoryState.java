@@ -19,7 +19,6 @@ public class RepositoryState {
         orders = repositorySupplier.get();
         System.out.println(orders.getClass().getSimpleName() + " > setup > populate");
 
-
         IntStream.rangeClosed(1, sizeState.size)
                 .mapToObj(Order::new)
                 .forEach(orders::add);

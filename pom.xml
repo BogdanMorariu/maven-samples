@@ -81,6 +81,8 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+
 	</dependencies>
 
 	<modules>
@@ -89,6 +91,7 @@
 		<module>Lab1</module>
 		<module>report</module>
         <module>Lab2</module>
+        <module>Lab3</module>
         <!-- add here any other modules -->
 	</modules>
 

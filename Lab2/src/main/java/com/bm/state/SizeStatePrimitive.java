@@ -1,6 +1,5 @@
 package com.bm.state;
 
-import com.bm.model.Order;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
@@ -10,40 +9,39 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 @State(Scope.Benchmark)
-public class SizeState {
+public class SizeStatePrimitive {
     @Param({"100","10000"})
     public int size;
 
-    public Supplier<Order> existing = new Supplier<Order>() {
+    public Supplier<Long> existing = new Supplier<Long>() {
         private final Random random = new Random();
         @Override
-        public Order get() {
-            return new Order(random.nextInt(size));
+        public Long get() {
+            return (long) random.nextInt(size);
         }
     };
 
-    public Supplier<Order> before = new Supplier<Order>() {
+    public Supplier<Long> before = new Supplier<Long>() {
         private final AtomicInteger currentSize = new AtomicInteger(size);
         @Override
-        public Order get() {
-            return new Order(currentSize.decrementAndGet());
+        public Long get() {
+            return (long) currentSize.decrementAndGet();
         }
     };
 
-    public Supplier<Order> after = new Supplier<Order>() {
+    public Supplier<Long> after = new Supplier<Long>() {
         private final AtomicInteger currentSize = new AtomicInteger(size);
         @Override
-        public Order get() {
-            return new Order(currentSize.incrementAndGet());
+        public Long get() {
+            return (long) currentSize.incrementAndGet();
         }
     };
 
-    public Supplier<Order> last = new Supplier<Order>() {
+    public Supplier<Long> last = new Supplier<Long>() {
         private final AtomicInteger currentSize = new AtomicInteger(size);
         @Override
-        public Order get() {
-            return new Order(currentSize.get());
+        public Long get() {
+            return (long) currentSize.get();
         }
     };
-
 }

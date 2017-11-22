@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 /**
  * Created by Bogdan on 03.10.2017.
  */
+
+//TODO teste diferite pe metode
 public class CalculatorTest {
 
     Calculator calculator;
