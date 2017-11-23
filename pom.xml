@@ -81,7 +81,12 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok-maven</artifactId>
+			<version>1.16.18.1</version>
+			<type>pom</type>
+		</dependency>
 
 	</dependencies>
 
@@ -92,7 +97,8 @@
 		<module>report</module>
         <module>Lab2</module>
         <module>Lab3</module>
-        <!-- add here any other modules -->
+		<module>Lab4</module>
+		<!-- add here any other modules -->
 	</modules>
 
 	<profiles>
