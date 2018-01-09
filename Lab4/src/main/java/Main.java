@@ -11,8 +11,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        producePersons();
-        //produceBigDecimals();
+        Thread.sleep(100);
+        //producePersons();
+        produceBigDecimals();
     }
 
     private static void producePersons(){
@@ -26,7 +27,7 @@ public class Main {
 
     private static void produceBigDecimals() throws InterruptedException {
         List<BigDecimal> bdList = new ArrayList<>();
-        int listSize = 10000;
+        int listSize = 100000000;
         Random rand = new Random();
         for(int i=0; i< listSize;i++)
             bdList.add(new BigDecimal(rand.nextLong() & Integer.MAX_VALUE));

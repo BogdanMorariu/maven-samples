@@ -2,6 +2,8 @@ package Model;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Person {
     private String name1;
@@ -27,7 +29,7 @@ public class Person {
     }
 
     private Boolean isValidName(String name){
-        return !name.equals("") && !name.equals("-") && !name.matches(".*\\d.*");
+        return !name.equals("") && !name.equals("-") && !Pattern.compile(".*\\d.*").matcher(name).matches();
     }
 
     public Boolean isEmpty(){

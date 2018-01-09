@@ -21,10 +21,9 @@ public class Consumer implements Runnable{
     }
 
     public void run() {
-        try{
+        try(OutputStream stream = Files.newOutputStream(Paths.get(filename),StandardOpenOption.CREATE)){
             int i=1;
             Person person;
-            OutputStream stream = Files.newOutputStream(Paths.get(filename),StandardOpenOption.CREATE);
             while(!(person = queue.take()).isEmpty()){
                 stream.write(person.toFileFormat().getBytes(Charset.forName("UTF-8")));
                 System.out.println("Consumed person nr " + i++ + " : " + person.toString());
